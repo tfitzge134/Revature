@@ -2,70 +2,78 @@ package uncheckedbusinessexception;
 
 public class UncheckedBusinessException {
 	/*
-	 * //3)Create a BusinessException(unchecked)
-	 *  and use it for handling for invalid DL number.
-	 *  First 2 alphabets.
-
+	 * //3)Create a BusinessException(unchecked) and use it for handling for invalid
+	 * DL number. First 2 alphabets.
+	 * 
 	 */
-	
-	//requirement by state
-	//mass 
-	String state;
-	String licenseNumber;
-	static void License(String state, String licenseNumber) {
-		if(state == "MA" {
-			return validState()
-			
-		}
-		
-		
-	}
-	
 
-	private static Object validState(String letter, String lic) {
-		String lic = "Tx-42-1998-9876543";
-				/*
-				 * Alabama	1-8Numeric
-				 */
-				if(lic.matches("(.*[0-9]){8}") );{
-		System.out.println("Alabama");
-				}
-				/*
-				 * Alaska	1-7Numeric
-				 */
-				if(lic.matches("([0-9]){8}")) {
-					System.out.println("Alaska");
-				}
-				/*Arizona	1 Alpha + 8 Numeric OR 9 Numeric
-				 * 
-				 * 
-				 */
-				if(lic.matches("(([A-Z]{1}[0-9]{8})") ) {
-					System.out.println("Arizona");
-				}
-				if(lic.matches("(([A-Z]{1}[0-9]{9})") ) {
-					System.out.println("Arizona");
-				}
-				
+	// requirement by state
+	// mass
+	static boolean isValidLicense(String state, String licenseNumber) throws BusinessException {
+		if (state == "AL") {
+			/*
+			 * Alabama 1-8Numeric
+			 */
+			if (licenseNumber.matches("(.*[0-9]){8}"))
+
+			{
+				System.out.println("Alabama");
+				return true;
+			} else {
+				throw new BusinessException("Invalid Alabama License: " + licenseNumber);
+			}
+
+		}
+		return false;
+
+	}
+
+	private static void validState(String letter, String lic) {
+
+		/*
+		 * Alabama 1-8Numeric
+		 */
+		if (lic.matches("(.*[0-9]){8}"))
+			;
+		{
+			System.out.println("Alabama");
+		}
+		/*
+		 * Alaska 1-7Numeric
+		 */
+		if (lic.matches("([0-9]){8}")) {
+			System.out.println("Alaska");
+		}
+		/*
+		 * Arizona 1 Alpha + 8 Numeric OR 9 Numeric
+		 * 
+		 * 
+		 */
+		if (lic.matches("(([A-Z]{1}[0-9]{8})")) {
+			System.out.println("Arizona");
+		}
+		if (lic.matches("(([A-Z]{1}[0-9]{9})")) {
+			System.out.println("Arizona");
+		}
+
 //				Arkansas	4-9Numeric
-				if(lic.matches("([0-9]{4})") ) {
-					System.out.println("Arkanzas");
-				}
-				
+		if (lic.matches("([0-9]{4})")) {
+			System.out.println("Arkanzas");
+		}
+
 //				California	1Alpha+7Numeric
-				if(lic.matches("(([A-Z]{1}[0-9]{7})") ) {
-					System.out.println("California");
-				}
-				
+		if (lic.matches("(([A-Z]{1}[0-9]{7})")) {
+			System.out.println("California");
+		}
+
 //				Colorado	9Numeric or 1Alpha+3-6Numeric or 2Alpha+2-5Numeric
-				if(lic.matches("(([0-9]{7})")  {
-					System.out.println("California");
-				}
-				if(lic.matches("(([A-Z]{1}[1]{2})") ) {
-					System.out.println("California");
-				}
-				
-				
+		if (lic.matches("(([0-9]{7})")) {
+			System.out.println("California");
+		}
+		if (lic.matches("(([A-Z]{1}[1]{2})")) {
+			System.out.println("California");
+		}
+
 //				Connecticut	9Numeric;
 //				Delaware	1-7Numeric
 //				District of Columbia	7Numeric or 9Numeric
@@ -111,28 +119,24 @@ public class UncheckedBusinessException {
 //				West Virginia	7Numeric or 1-2Alpha+5-6Numeric
 //				Wisconsin	1Alpha+13Numeric
 //				Wyoming	9-10Numeric
-				
 
-		
-		
 	}
 
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BusinessException {
 		// TODO Auto-generated method stub
-		//has to have state string state =with two characters
-		//has to be 7 digit
+		// has to have state string state =with two characters
+		// has to be 7 digit
 		//
 		/*
-		 * default:
-            if (s.matches("[A-Z]{1}[a-z]{2}\\d{1,}")) {
-                filminfo( s );
-            }
-            break;
+		 * default: if (s.matches("[A-Z]{1}[a-z]{2}\\d{1,}")) { filminfo( s ); } break;
 		 */
-		
+
+		String state = "AL";
+		String lic = "12345678";
+		// String lic = "Tx-42-1998-9876543";
+		boolean valid = isValidLicense(state, lic);
+		System.out.println("Valid License: " + valid);
 
 	}
 
 }
-
