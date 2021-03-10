@@ -1,0 +1,9 @@
+ Find difference between LinkedList Vs PriorityQueue
+ 
+ The difference between linkelist and PriorityQueue is
+at the the time of inertion
+ PriorityQueue will be sorted as well as ordered. Priority Queue, while you are 
+ trying add elements in PriorityQueue, they will get sorted on the basies of thier
+ natural order or as per the comparator function.
+  LinkedList will be just ordered.
+ 

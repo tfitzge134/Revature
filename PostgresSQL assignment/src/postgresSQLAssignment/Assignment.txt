@@ -1,0 +1,176 @@
+What is RDBMS?
+An RDBM is a DBMS designed for relational databases.
+ A relational database management system (RDBMS or just RDB) is a common type of database that stores data in tables,
+ so it can be used in relation to other stored datasets.
+ 
+ Why a developer should learn SQL?
+ *SQL is a persistent, durable storage. 
+*Increased marketability as a developer
+*Countless technological uses
+*Foundational knowledge for other languages
+*Secure future for SQL
+*Powerful features of SQL
+
+Normalization
+Normalization is a database design technique that reduces data redundancy 
+and eliminates undesirable characteristics like Insertion,
+ Update and Deletion Anomalies. Normalization rules divides larger tables into smaller tables and links them using relationships. The purpose of Normalization in SQL is to eliminate redundant (repetitive) data and ensure data is stored. 1NF (First Normal Form)
+
+Insertion anomaly: It occurs when we cannot insert data to the table
+ without the presence of another attribute
+Update anomaly:  It is a data inconsistency 
+that results from data redundancy and a partial update of data.
+Deletion Anomaly: It occurs when certain attributes
+ are lost because of the deletion of other attributes. 
+ 
+ Normalization types
+ In the first Normal Form, we tackle the problem of atomicity.
+ Here atomicity means values in the table should
+ not be further divided. In simple terms, a single cell cannot hold
+ multiple values. If a table contains a composite or multi-valued attribute, 
+ it violates the First Normal Form.  2nd Normal Form (2NF)
+2nd Form The first condition in the 2nd NF is that
+ the table has to be in 1st NF. 
+ The table also should not contain partial dependency. Here partial dependency means the proper subset of candidate key determines a non-prime attribute. To understand in a better way lets look at the below example.(Table with fields that should be added to form another tabel
+3rd Normal Form (3NF)
+The same rule applies as before i.e, 
+the table has to be in 2NF before proceeding to 3NF. The other condition is there should be no transitive dependency for non-prime attributes. That means non-prime attributes (which doesn’t form a candidate key) should not be dependent on other non-prime attributes in a given table. So a transitive dependency is a functional dependency in which X → Z (X determines Z) indirectly, by virtue of X → Y and Y → Z (where it is not the case that Y → X)Exmple: a table with sudentId, sudentname, subjectid, subject. Studentid determines subjectid and subject id deterimines subject
+ 
+ 
+ ACID Properties
+ A transaction is a single logical unit of work which accesses and possibly 
+ modifies the contents of a database. 
+ Transactions access data using read and write operations.
+In order to maintain consistency in a database, before 
+and after the transaction, certain properties are followed. 
+These are called ACID properties.
+A transaction is a single logical unit of work which accesses
+ and possibly modifies the contents of a database. Transactions access data using read and write operations.
+In order to maintain consistency in a database, 
+before and after the transaction, certain properties are followed.
+ These are called ACID properties.
+ In this Normal Form, we tackle the problem of atomicity.
+Here atomicity means values in the table should not be further divided.
+  In simple terms, a single cell cannot hold multiple values. 
+  If a table contains a composite or multi-valued attribute, 
+  it violates the First Normal Form.  
+  
+  
+  Atomicity
+All changes to data are performed as if they are a single operation.
+ That is, all the changes are performed, or none of them are.
+For example, in an application that trade stocks from one account to another,
+ the atomicity property ensures that, if a sale is made successfully 
+ from one account, the corresponding buy it is made to the other account.
+Consistency
+Data is in a consistent state when a transaction starts and when it ends.
+For example, in an application that trade stocks from one account to another,
+ the consistency property ensures that the total value of stock in both 
+ the accounts is the same at the start and end of each transaction.
+Isolation
+The intermediate state of a transaction is invisible to other transactions.
+ As a result, transactions that run concurrently appear to be serialized.
+For example, in an application that trade stock from one account to another,
+ the isolation property ensures that another transaction sees the transferred funds in one account or the other, but not in both, nor in neither.
+Durability
+After a transaction successfully completes, changes to data persist and are not
+ undone, even in the event of a system failure.
+For example, in an application that trades stock from one buyer account
+ to a seller account,
+ the durability property ensures that the changes made to each account
+  will not be reversed.
+
+ Isolation Levels:
+ Transactions specify an isolation level that defines the degree 
+ to which one transaction must be isolated from resource 
+ or data modifications made by other transactions.
+  Isolation levels are described in terms of which concurrency side effects,
+  such as dirty reads or phantom reads, are allowed.
+  A lower isolation level increases the ability of many users to access data
+ at the same time, but increases the number of concurrency effects, 
+such as dirty reads or lost updates, that users might encounter. 
+ Conversely, a higher isolation level reduces the types of concurrency effects 
+that users might encounter, but requires more system resources and increases
+ the chances that one transaction will block another.
+  
+  type of Isolation Levels
+  
+ *Read uncommitted 
+Locks are obtained on modifications to the database and held until end of transaction (EOT). 
+Reading from the database does not involve any locking.
+*Read committed 
+Locks are acquired for reading and modifying the database. Locks are released after 
+reading but locks on modified objects are held until EOT.
+*Repeatable read 
+Locks are obtained for reading and modifying the database. 
+Locks on all modified objects are held until EOT.
+ Locks obtained for reading data are held until EOT.
+ Locks on non-modified access structures
+ (such as indexes and hashing structures) are released after reading.
+*Serializable
+All data read or modified is locked until EOT. 
+All access structures that are modified are locked until EOT. 
+
+Level	Dirty Read	    Nonrepeatable   Read	   Phantom Read
+0,     Read uncommitted	Yes	             Yes	Yes
+1,     Read committed	No	             Yes	Yes
+2,     Repeatable read	No	             No	    Yes
+3,     Serializable	    No	             No	    No
+ 
+ What is postgresSQL? 
+ 
+ Data types in Postgressql.
+ Name	    Storage Size	       Description
+smallint	  2 bytes	           small-range integer
+integer	      4 bytes	typical     choice for integer
+bigint	      8 bytes	             large-range integer
+decimal	      variable	             user-specified precision,exact
+numeric	      variable	             user-specified precision,exact
+real	      4 bytes	             variable-precision,inexact
+double precision 8 bytes	         variable-precision,inexact
+smallserial	2 bytes	small            autoincrementing integer
+serial	4 bytes	                    autoincrementing integer
+bigserial	8 bytes	large            autoincrementing integer
+
+Money type
+Name	Storage Size	Description	Range
+money	8 bytes	currency amount
+
+character type
+character varying(n), varchar(n)
+variable-length with limit 2
+character(n), char(n)
+fixed-length, blank padded 3
+text
+variable unlimited length
+
+Binary type
+bytea	1 or 4 bytes plus the actual binary string
+
+Date type
+
+Boolean type
+
+Enumerated Type
+
+Geometric type
+
+Network address type
+
+Bit String Type
+
+Text Search Type
+
+json Type
+
+XML type
+
+UUID Type
+
+
+
+
+ 
+ 
+ 
+ 8)What is Integrity Constraints?
